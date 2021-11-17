@@ -8,9 +8,9 @@ const { usdt, api, sec, profit, sloss } = process.env;
 startWS();
 detectE.on('NEWLISTING', async (data) => {
   try {
-    const { s: symbol, a: askPrice } = { ...data };
+    const { s: symbol, c: closePrice } = { ...data };
     await loadeInfo({ symbol });
-    const qty = getQty({ symbol, price: askPrice, usdt });
+    const qty = getQty({ symbol, price: closePrice, usdt });
     //place buy order
     const bresp = await buy({ keys: { api, sec }, qty, symbol });
     const buyPrice =

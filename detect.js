@@ -57,7 +57,6 @@ const processStream = (mb) => {
       //new symbol detected
       log(`New symbol ${data?.s} detected at ${Date.now()}`);
       log(data);
-      if (!data?.a) return;
       detectE.emit('NEWLISTING', data);
       symbols[data?.s] = 1;
     }
