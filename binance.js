@@ -6,7 +6,7 @@ module.exports = async (event) => {
     const { method, path, keys, params } = event;
     const baseURL = 'https://api.binance.com';
     if (!keys?.api) {
-      //public request
+      //Public API
       const queryString = params
         ? Object.keys(params)
             .map((d) => `${d}=${params[d]}`)
@@ -17,7 +17,7 @@ module.exports = async (event) => {
       return { statusCode: 200, body: JSON.parse(resp.body) };
     }
 
-    //Signed Requests
+    //Signed API
     params['timestamp'] = Date.now() - 1000;
     params['recvWindow'] = 15000;
     const queryString = Object.keys(params)
