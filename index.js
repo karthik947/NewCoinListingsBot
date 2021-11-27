@@ -15,7 +15,7 @@ detectE.on('NEWLISTING', async (data) => {
     const bresp = await buy({ keys: { api, sec }, qty, symbol });
     const buyPrice =
       bresp.fills.reduce((a, d) => a + d.price * d.qty, 0) /
-      bresp.fills.reduce((a, d) => a + d.qty, 0);
+      bresp.fills.reduce((a, d) => a + d.qty * 1, 0);
     return await sell({
       keys: { api, sec },
       buyPrice,

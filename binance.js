@@ -1,5 +1,6 @@
 const got = require('got');
 const crypto = require('crypto');
+const { log, error } = console;
 
 module.exports = async (event) => {
   try {
@@ -38,6 +39,7 @@ module.exports = async (event) => {
       method === 'GET' ? await got(url, options) : await got.post(url, options);
     return { statusCode: 200, body: JSON.parse(resp.body) };
   } catch (err) {
+    error(err);
     throw JSON.stringify(err);
   }
 };
