@@ -15,5 +15,8 @@
     "number-precision": "^1.5.1",
     "scientific-to-decimal": "^1.1.1",
     "ws": "^8.2.3"
+  },
+  "devDependencies": {
+    "bottleneck": "^2.19.5"
   }
 }

@@ -37,9 +37,8 @@ module.exports = async (event) => {
     };
     const resp =
       method === 'GET' ? await got(url, options) : await got.post(url, options);
-    return { statusCode: 200, body: JSON.parse(resp.body) };
+    return { statusCode: resp.statusCode, body: JSON.parse(resp.body) };
   } catch (err) {
-    error(err);
-    throw JSON.stringify(err);
+    throw err;
   }
 };

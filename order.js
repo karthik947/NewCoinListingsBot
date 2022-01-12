@@ -66,6 +66,8 @@ const sell = async ({ keys, buyPrice, symbol, qty, profit, sloss }) => {
       const stopPrice = NP.strip(
         Math.floor(buyPrice * (1 - sloss / 100) * 10 ** pstep) / 10 ** pstep
       );
+      log(`Sell Price is ${price}`);
+      log(`Stop-Loss Price is ${stopPrice}`);
       const resp = await binance({
         method: 'POST',
         path: '/api/v3/order/oco',
@@ -88,6 +90,7 @@ const sell = async ({ keys, buyPrice, symbol, qty, profit, sloss }) => {
       const price = NP.strip(
         Math.floor(buyPrice * (1 + profit / 100) * 10 ** pstep) / 10 ** pstep
       );
+      log(`Sell Price is ${price}`);
       const resp = await binance({
         method: 'POST',
         path: '/api/v3/order',
