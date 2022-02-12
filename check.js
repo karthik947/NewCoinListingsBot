@@ -1,6 +1,6 @@
 const { log, error } = console;
 const binance = require('./binance');
-const checkFrom = 5; //last 5days
+const checkFrom = 10; //last 5days
 const lastTS = Date.now() - checkFrom * 24 * 60 * 60 * 1000;
 const bottleneck = require('bottleneck');
 const limiter = new bottleneck({
